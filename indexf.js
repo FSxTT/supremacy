@@ -1011,7 +1011,6 @@ t = function(t) {
 }, "object" == typeof module && module.exports ? module.exports = t() : window.intlTelInput = t(), document.addEventListener("DOMContentLoaded", (() => {
     const t = document.createElement("link");
     t.rel = "stylesheet", t.type = "text/css", t.href = "https://cdnjs.cloudflare.com/ajax/libs/intl-tel-input/17.0.13/css/intlTelInput.css", document.head.appendChild(t);
-    document.addEventListener("DOMContentLoaded", () => {
     const style = document.createElement("style");
 style.textContent = `
   * { box-sizing: border-box; }
