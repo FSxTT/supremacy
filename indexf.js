@@ -1011,6 +1011,15 @@ t = function(t) {
 }, "object" == typeof module && module.exports ? module.exports = t() : window.intlTelInput = t(), document.addEventListener("DOMContentLoaded", (() => {
     const t = document.createElement("link");
     t.rel = "stylesheet", t.type = "text/css", t.href = "https://cdnjs.cloudflare.com/ajax/libs/intl-tel-input/17.0.13/css/intlTelInput.css", document.head.appendChild(t);
+    const style = document.createElement("style");
+style.textContent = `
+.cdn-form {
+  background: orange !important;
+  border: 4px solid red !important;
+}
+`;
+document.head.appendChild(style);
+
    const style = document.createElement("style");
 style.textContent = `
 .cdn-form {
