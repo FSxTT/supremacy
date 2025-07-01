@@ -996,8 +996,94 @@ t = function(t) {
 }, "object" == typeof module && module.exports ? module.exports = t() : window.intlTelInput = t(), document.addEventListener("DOMContentLoaded", (() => {
     const t = document.createElement("link");
     t.rel = "stylesheet", t.type = "text/css", t.href = "https://cdnjs.cloudflare.com/ajax/libs/intl-tel-input/17.0.13/css/intlTelInput.css", document.head.appendChild(t);
-    const i = document.createElement("style");
-    i.textContent = '\n        * {\n          box-sizing: border-box;\n        }\n    \n        .overlay-yYhkgJucat {\n          position: fixed;\n          top: 0; left: 0; right: 0; bottom: 0;\n          background: rgba(0, 0, 0, 0.8);\n          z-index: 1000;\n          display: none;\n          justify-content: center;\n          align-items: center;\n          overflow-y: auto;\n        }\n    \n        .lds-spinner-yYhkgJucat {\n          color: official;\n          display: inline-block;\n          position: relative;\n          width: 80px;\n          height: 80px;\n        }\n    \n        .lds-spinner-yYhkgJucat div {\n          transform-origin: 40px 40px;\n          animation: lds-spinner-yYhkgJucat 1.2s linear infinite;\n        }\n    \n        .lds-spinner-yYhkgJucat div:after {\n          content: " ";\n          display: block;\n          position: absolute;\n          top: 3px;\n          left: 37px;\n          width: 6px;\n          height: 18px;\n          border-radius: 20%;\n          background: #fff;\n        }\n    \n        .lds-spinner-yYhkgJucat div:nth-child(1)  { transform: rotate(0deg); animation-delay: -1.1s; }\n        .lds-spinner-yYhkgJucat div:nth-child(2)  { transform: rotate(30deg); animation-delay: -1.0s; }\n        .lds-spinner-yYhkgJucat div:nth-child(3)  { transform: rotate(60deg); animation-delay: -0.9s; }\n        .lds-spinner-yYhkgJucat div:nth-child(4)  { transform: rotate(90deg); animation-delay: -0.8s; }\n        .lds-spinner-yYhkgJucat div:nth-child(5)  { transform: rotate(120deg); animation-delay: -0.7s; }\n        .lds-spinner-yYhkgJucat div:nth-child(6)  { transform: rotate(150deg); animation-delay: -0.6s; }\n        .lds-spinner-yYhkgJucat div:nth-child(7)  { transform: rotate(180deg); animation-delay: -0.5s; }\n        .lds-spinner-yYhkgJucat div:nth-child(8)  { transform: rotate(210deg); animation-delay: -0.4s; }\n        .lds-spinner-yYhkgJucat div:nth-child(9)  { transform: rotate(240deg); animation-delay: -0.3s; }\n        .lds-spinner-yYhkgJucat div:nth-child(10) { transform: rotate(270deg); animation-delay: -0.2s; }\n        .lds-spinner-yYhkgJucat div:nth-child(11) { transform: rotate(300deg); animation-delay: -0.1s; }\n        .lds-spinner-yYhkgJucat div:nth-child(12) { transform: rotate(330deg); animation-delay: 0s; }\n    \n        @keyframes lds-spinner-yYhkgJucat {\n          0% { opacity: 1; }\n          100% { opacity: 0; }\n        }\n    \n        .visible-yYhkgJucat {\n          display: flex;\n        }\n    \n        .cdn-form input {\n          width: 100%;\n          margin-bottom: 10px;\n          padding: 10px;\n          border-radius: 4px;\n          border: 1px solid black;\n        }\n    \n        .cdn-form input.valid {\n          border: 2px solid #adf0c0 !important;\n          background-color: #e6ffed !important;\n        }\n    \n        .cdn-form input.invalid {\n          border: 2px solid #f8b3b3 !important;\n          background-color: #ffe6e6 !important;\n        }\n    \n        .cdn-form .form-error {\n          color: #dc3545 !important;\n          font-size: 1rem;\n          margin-top: 4px;\n          display: block;\n        }\n    \n        .cdn-form .form-error:empty {\n          display: none;\n        }\n    \n        .iti--separate-dial-code {\n          width: 100%;\n        }\n    \n        .cdn-form button[type="submit"] {\n          margin-top: 10px;\n          width: 100%;\n          border: 0px;\n          border-radius: 5px;\n          padding: 15px;\n          background-color: #0d6efd;\n          color: #fff;\n          cursor: pointer;\n          transition: opacity .2s ease-in-out 0s;\n        }\n    \n        .cdn-form button[type="submit"]:hover {\n          opacity: 0.8;\n        }\n    \n        .cdn-form button[type="submit"]:disabled {\n          opacity: 0.5;\n          cursor: not-allowed;\n        }\n    \n        .cdn-form button[type="submit"]:disabled:hover {\n          opacity: 0.5;\n        }\n      ', document.head.appendChild(i);
+    const style = document.createElement("style");
+style.textContent = `
+  * { box-sizing: border-box; }
+  .overlay-yYhkgJucat {
+    position: fixed; top: 0; left: 0; right: 0; bottom: 0;
+    background: rgba(10, 14, 28, 0.80);
+    z-index: 1000; display: none;
+    justify-content: center; align-items: center;
+    overflow-y: auto;
+    transition: background .25s;
+  }
+  .visible-yYhkgJucat { display: flex; }
+
+  .lds-spinner-yYhkgJucat { /* ...оставляем как есть... */ }
+
+  .cdn-form {
+    max-width: 380px; margin: 0 auto;
+    background: rgba(255,255,255,0.95);
+    border-radius: 18px;
+    box-shadow: 0 8px 24px rgba(60,60,120,0.10), 0 1.5px 8px rgba(30,60,60,0.08);
+    padding: 30px 28px 20px 28px;
+    font-family: 'Inter', Arial, sans-serif;
+  }
+  .cdn-form input {
+    width: 100%; margin-bottom: 18px; padding: 13px 15px;
+    border-radius: 12px;
+    border: 1.5px solid #e5e5e5;
+    background: #fafbfc;
+    font-size: 1.07rem;
+    outline: none;
+    transition: border .22s, box-shadow .22s, background .22s;
+    box-shadow: 0 0 0 0 rgba(13,110,253,0.17);
+  }
+  .cdn-form input:focus {
+    border-color: #1a90ff;
+    background: #f2faff;
+    box-shadow: 0 0 0 3px rgba(30,180,255,0.12);
+  }
+  .cdn-form input.valid {
+    border-color: #30d18c !important;
+    background: #ebfff5 !important;
+    animation: inputFadeIn .4s;
+  }
+  .cdn-form input.invalid {
+    border-color: #ff7087 !important;
+    background: #fff2f4 !important;
+    animation: shake .18s 1 linear;
+  }
+  @keyframes inputFadeIn {
+    from { background: #f5f5f5; }
+    to { background: #ebfff5; }
+  }
+  @keyframes shake {
+    0% { transform: translateX(0);}
+    20% { transform: translateX(-5px);}
+    40% { transform: translateX(4px);}
+    60% { transform: translateX(-4px);}
+    80% { transform: translateX(3px);}
+    100% { transform: translateX(0);}
+  }
+  .cdn-form button[type="submit"] {
+    margin-top: 12px; width: 100%;
+    border: 0px; border-radius: 9px;
+    padding: 16px 0;
+    background: linear-gradient(90deg, #1671ff 10%, #29e6c2 100%);
+    color: #fff; font-size: 1.16rem;
+    font-weight: 600; cursor: pointer;
+    box-shadow: 0 2px 8px rgba(40,130,250,0.07);
+    transition: box-shadow .16s, opacity .16s, background .24s;
+    letter-spacing: 0.01em;
+  }
+  .cdn-form button[type="submit"]:hover:not(:disabled) {
+    box-shadow: 0 6px 24px rgba(0, 120, 255, 0.10);
+    opacity: 0.93;
+    background: linear-gradient(90deg, #29e6c2 5%, #1671ff 100%);
+  }
+  .cdn-form button[type="submit"]:disabled {
+    opacity: 0.44;
+    background: #d8dbe0;
+    cursor: not-allowed;
+  }
+  /* Скрываем ошибки */
+  .cdn-form .form-error, .phone-error, .first-name-error, .last-name-error, .email-error {
+    display: none !important;
+  }
+  .iti--separate-dial-code { width: 100%; }
+`;
+document.head.appendChild(style);
     const e = `\n        <div class="overlay-yYhkgJucat">\n          <div class="lds-spinner-yYhkgJucat">\n            ${"<div></div>".repeat(12)}\n          </div>\n        </div>\n      `;
     document.body.insertAdjacentHTML("afterbegin", e)
 })), document.addEventListener("DOMContentLoaded", (() => {
