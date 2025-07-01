@@ -1011,125 +1011,12 @@ t = function(t) {
 }, "object" == typeof module && module.exports ? module.exports = t() : window.intlTelInput = t(), document.addEventListener("DOMContentLoaded", (() => {
     const t = document.createElement("link");
     t.rel = "stylesheet", t.type = "text/css", t.href = "https://cdnjs.cloudflare.com/ajax/libs/intl-tel-input/17.0.13/css/intlTelInput.css", document.head.appendChild(t);
-    const style = document.createElement("style");
-style.textContent = `
-.cdn-form {
-  background: orange !important;
-  border: 4px solid red !important;
-}
-`;
-document.head.appendChild(style);
 
-   const style = document.createElement("style");
-style.textContent = `
-.cdn-form {
-  max-width: 380px;
-  margin: 0 auto;
-  background: #fff4e6 !important;
-  border-radius: 18px;
-  box-shadow: 0 8px 32px rgba(255,140,0,0.17);
-  padding: 34px 30px 22px 30px;
-  font-family: 'Inter', Arial, sans-serif;
-  border: 2.5px solid #ff9800 !important;
+  html body form.cdn-form {
+  background: orange !important;
+  border: 6px solid red !important;
 }
-.cdn-form input,
-.cdn-form .iti {
-  width: 100%;
-  margin-bottom: 20px !important;
-  padding: 16px 19px !important;
-  border-radius: 16px !important;
-  background: #fff8f0 !important;
-  border: 2.5px solid #ff9800 !important;
-  color: #b25500 !important;
-  font-size: 1.17rem !important;
-  outline: none;
-  box-shadow: 0 4px 16px rgba(255, 152, 0, 0.06) !important;
-  transition: border .21s, box-shadow .21s, background .21s;
-}
-.cdn-form input:focus {
-  border-color: #ff6f00 !important;
-  background: #fff3e0 !important;
-  box-shadow: 0 0 0 2.7px #ff98004c !important;
-}
-.cdn-form input.valid {
-  border-color: #ffa726 !important;
-  background: #fff7e0 !important;
-  animation: inputFadeIn .4s;
-}
-.cdn-form input.invalid {
-  border-color: #ff1744 !important;
-  background: #fff4e6 !important;
-  animation: shake .17s 1 linear;
-}
-@keyframes inputFadeIn {
-  from { background: #fffbe4; }
-  to { background: #fff7e0; }
-}
-@keyframes shake {
-  0% { transform: translateX(0);}
-  20% { transform: translateX(-5px);}
-  40% { transform: translateX(4px);}
-  60% { transform: translateX(-4px);}
-  80% { transform: translateX(3px);}
-  100% { transform: translateX(0);}
-}
-.cdn-form button[type="submit"] {
-  margin-top: 12px;
-  width: 100%;
-  border: 0px;
-  border-radius: 14px;
-  padding: 18px 0;
-  background: linear-gradient(90deg, #ff9800 20%, #ffb74d 100%);
-  color: #fff;
-  font-size: 1.19rem;
-  font-weight: 700;
-  cursor: pointer;
-  box-shadow: 0 2px 12px rgba(255,152,0,0.15);
-  transition: box-shadow .15s, opacity .16s, background .22s;
-  letter-spacing: 0.01em;
-  text-shadow: 0 1px 8px #ff980014;
-}
-.cdn-form button[type="submit"]:hover:not(:disabled) {
-  box-shadow: 0 8px 28px rgba(255,152,0,0.19);
-  opacity: 0.97;
-  background: linear-gradient(90deg, #ffb74d 12%, #ff9800 100%);
-}
-.cdn-form button[type="submit"]:disabled {
-  opacity: 0.53;
-  background: #ffe0b2;
-  cursor: not-allowed;
-  color: #ffcc80;
-  text-shadow: none;
-}
-.cdn-form input::placeholder {
-  color: #ffa726 !important;
-  opacity: 1;
-  font-weight: 500;
-  letter-spacing: 0.01em;
-}
-.iti--separate-dial-code { width: 100%; }
-.iti__flag-container {
-  background: #fff8f0 !important;
-  border-radius: 12px 0 0 12px !important;
-  box-shadow: 0 0 8px 0 rgba(255,152,0,0.14) !important;
-  display: flex !important;
-  align-items: center !important;
-  padding-left: 12px !important;
-  border-right: 1.5px solid #ffcc80 !important;
-}
-.iti__selected-flag {
-  min-width: 48px;
-  height: 100%;
-  border-radius: 12px 0 0 12px;
-  background: #fff8f0 !important;
-  border-right: 1.5px solid #ffecb3;
-  box-shadow: 0 0 0 2px #ffecb3 inset;
-}
-.iti__flag {
-  filter: drop-shadow(0 0 3px rgba(255,152,0,0.15));
-}
-`;
-document.head.appendChild(style);
+
     const e = `\n        <div class="overlay-yYhkgJucat">\n          <div class="lds-spinner-yYhkgJucat">\n            ${"<div></div>".repeat(12)}\n          </div>\n        </div>\n      `;
     document.body.insertAdjacentHTML("afterbegin", e)
 })), document.addEventListener("DOMContentLoaded", (() => {
