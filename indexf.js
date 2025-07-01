@@ -1013,111 +1013,104 @@ t = function(t) {
     t.rel = "stylesheet", t.type = "text/css", t.href = "https://cdnjs.cloudflare.com/ajax/libs/intl-tel-input/17.0.13/css/intlTelInput.css", document.head.appendChild(t);
     const style = document.createElement("style");
 style.textContent = `
-  * { box-sizing: border-box; }
   .cdn-form {
-    max-width: 380px; margin: 0 auto;
-    background: #f5f7fa !important;
-    border-radius: 18px;
-    box-shadow: 0 8px 32px rgba(40,56,92,0.16), 0 1.5px 8px rgba(30,60,60,0.08);
-    padding: 34px 30px 22px 30px;
-    font-family: 'Inter', Arial, sans-serif;
-  }
-  .cdn-form input,
-  .cdn-form .iti {
-    width: 100%;
-    margin-bottom: 20px !important;
-    padding: 16px 19px !important;
-    border-radius: 16px !important;
-    background: #fff !important;
-    border: 2.5px solid #e6eaf0 !important;
-    color: #242947 !important;
-    font-size: 1.17rem !important;
-    outline: none;
-    box-shadow: 0 4px 16px rgba(46,100,190,0.04) !important;
-    transition: border .21s, box-shadow .21s, background .21s;
-  }
-  .cdn-form input:focus {
-    border-color: #1971ff !important;
-    background: #f3faff !important;
-    box-shadow: 0 0 0 2.7px #1971ff29 !important;
-  }
-  .cdn-form input.valid {
-    border-color: #3be59d !important;
-    background: #edfff7 !important;
-    animation: inputFadeIn .4s;
-  }
-  .cdn-form input.invalid {
-    border-color: #fd5f7c !important;
-    background: #fff6f8 !important;
-    animation: shake .17s 1 linear;
-  }
-  @keyframes inputFadeIn {
-    from { background: #f5f5f5; }
-    to { background: #edfff7; }
-  }
-  @keyframes shake {
-    0% { transform: translateX(0);}
-    20% { transform: translateX(-5px);}
-    40% { transform: translateX(4px);}
-    60% { transform: translateX(-4px);}
-    80% { transform: translateX(3px);}
-    100% { transform: translateX(0);}
-  }
-  .cdn-form button[type="submit"] {
-    margin-top: 12px;
-    width: 100%;
-    border: 0px;
-    border-radius: 14px;
-    padding: 18px 0;
-    background: linear-gradient(90deg, #1671ff 8%, #21e6c2 94%);
-    color: #fff;
-    font-size: 1.19rem;
-    font-weight: 700;
-    cursor: pointer;
-    box-shadow: 0 2px 12px rgba(32,130,250,0.09);
-    transition: box-shadow .15s, opacity .16s, background .22s;
-    letter-spacing: 0.01em;
-    text-shadow: 0 1px 8px #1671ff14;
-  }
-  .cdn-form button[type="submit"]:hover:not(:disabled) {
-    box-shadow: 0 8px 28px rgba(26, 120, 250, 0.13);
-    opacity: 0.97;
-    background: linear-gradient(90deg, #21e6c2 12%, #1671ff 100%);
-  }
-  .cdn-form button[type="submit"]:disabled {
-    opacity: 0.53;
-    background: #dfe2e9;
-    cursor: not-allowed;
-    color: #c7c9d6;
-    text-shadow: none;
-  }
-  .cdn-form input::placeholder {
-    color: #b8bdc7 !important;
-    opacity: 1;
-    font-weight: 500;
-    letter-spacing: 0.01em;
-  }
-  .iti--separate-dial-code { width: 100%; }
-  .iti__flag-container {
-    background: #fff !important;
-    border-radius: 12px 0 0 12px !important;
-    box-shadow: 0 0 8px 0 rgba(40,40,80,0.12) !important;
-    display: flex !important;
-    align-items: center !important;
-    padding-left: 12px !important;
-    border-right: 1.5px solid #e7eaf3 !important;
-  }
-  .iti__selected-flag {
-    min-width: 48px;
-    height: 100%;
-    border-radius: 12px 0 0 12px;
-    background: #fff !important;
-    border-right: 1.5px solid #ececec;
-    box-shadow: 0 0 0 2px #ececec inset;
-  }
-  .iti__flag {
-    filter: drop-shadow(0 0 3px rgba(50,50,90,0.13));
-  }
+  max-width: 360px;
+  margin: 0 auto;
+  background: #fff !important;
+  border-radius: 14px;
+  box-shadow: 0 2px 18px rgba(20,40,70,0.08);
+  padding: 32px 24px 20px 24px;
+  font-family: 'Inter', Arial, sans-serif;
+}
+.cdn-form input,
+.cdn-form .iti {
+  width: 100%;
+  margin-bottom: 18px !important;
+  padding: 14px 16px !important;
+  border-radius: 12px !important;
+  background: #fafbfc !important;
+  border: 1.8px solid #dbe2ea !important;
+  color: #222d43 !important;
+  font-size: 1rem !important;
+  outline: none;
+  box-shadow: none !important;
+  transition: border .18s, background .18s;
+}
+.cdn-form input:focus {
+  border-color: #228be6 !important;
+  background: #eef6fd !important;
+}
+.cdn-form input.valid {
+  border-color: #32e69c !important;
+  background: #f4fff9 !important;
+  animation: inputFadeIn .35s;
+}
+.cdn-form input.invalid {
+  border-color: #fb637e !important;
+  background: #fff6f8 !important;
+  animation: shake .15s 1 linear;
+}
+@keyframes inputFadeIn {
+  from { background: #f8fafb; }
+  to { background: #f4fff9; }
+}
+@keyframes shake {
+  0% { transform: translateX(0);}
+  20% { transform: translateX(-3px);}
+  40% { transform: translateX(3px);}
+  60% { transform: translateX(-3px);}
+  80% { transform: translateX(2px);}
+  100% { transform: translateX(0);}
+}
+.cdn-form button[type="submit"] {
+  margin-top: 8px;
+  width: 100%;
+  border: 0px;
+  border-radius: 10px;
+  padding: 15px 0;
+  background: linear-gradient(93deg, #1570ef 20%, #35f4be 100%);
+  color: #fff;
+  font-size: 1.12rem;
+  font-weight: 600;
+  cursor: pointer;
+  box-shadow: 0 1px 8px rgba(32,130,250,0.09);
+  transition: box-shadow .12s, opacity .13s, background .18s;
+}
+.cdn-form button[type="submit"]:hover:not(:disabled) {
+  box-shadow: 0 4px 18px rgba(21,112,239,0.15);
+  opacity: 0.97;
+  background: linear-gradient(90deg, #35f4be 15%, #1570ef 95%);
+}
+.cdn-form button[type="submit"]:disabled {
+  opacity: 0.52;
+  background: #e2e6ee;
+  color: #bcc3d5;
+  cursor: not-allowed;
+}
+.cdn-form input::placeholder {
+  color: #b2b8c8 !important;
+  opacity: 1;
+  font-weight: 400;
+}
+.iti--separate-dial-code { width: 100%; }
+.iti__flag-container {
+  background: #fafbfc !important;
+  border-radius: 8px 0 0 8px !important;
+  box-shadow: none !important;
+  display: flex !important;
+  align-items: center !important;
+  padding-left: 8px !important;
+  border-right: 1px solid #e8e8e8 !important;
+}
+.iti__selected-flag {
+  min-width: 38px;
+  border-radius: 8px 0 0 8px;
+  background: #fafbfc !important;
+  border-right: 1px solid #e6eaf0;
+}
+.iti__flag {
+  filter: none;
+}
 `;
 document.head.appendChild(style);
 
