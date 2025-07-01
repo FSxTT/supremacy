@@ -1,15 +1,30 @@
 var t;
 
-function i(t, i, e) {
-    const a = document.querySelector(".phone-error");
-    if (!i.value.trim()) return i.classList.remove("valid", "invalid"), a && (a.textContent = ""), void n(t);
-    e && e.isValidNumber() ? (i.classList.add("valid"), i.classList.remove("invalid"), a && (a.textContent = "")) : (i.classList.remove("valid"), i.classList.add("invalid"), a && (a.textContent = "Invalid phone number.")), n(t)
+unction i(t, i, e) {
+    if (!i.value.trim()) {
+        i.classList.remove("valid", "invalid");
+        n(t);
+        return;
+    }
+    if (e && e.isValidNumber()) {
+        i.classList.add("valid");
+        i.classList.remove("invalid");
+    } else {
+        i.classList.remove("valid");
+        i.classList.add("invalid");
+    }
+    n(t);
 }
-
 function e(t, i, e, a = "Name") {
-    const s = i.value.trim(),
-        o = t.querySelector(e);
-    /^[A-Za-zА-Яа-яЁё\s'-]{3,}$/.test(s) ? (i.classList.add("valid"), i.classList.remove("invalid"), o.textContent = "") : (i.classList.add("invalid"), i.classList.remove("valid"), o.textContent = `Invalid ${a}.`), n(t)
+    const s = i.value.trim();
+    if (/^[A-Za-zА-Яа-яЁё\s'-]{3,}$/.test(s)) {
+        i.classList.add("valid");
+        i.classList.remove("invalid");
+    } else {
+        i.classList.add("invalid");
+        i.classList.remove("valid");
+    }
+    n(t);
 }
 
 function n(t) {
