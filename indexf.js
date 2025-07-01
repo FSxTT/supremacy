@@ -1097,6 +1097,56 @@ style.textContent = `
     display: none !important;
   }
   .iti--separate-dial-code { width: 100%; }
+  .iti__flag-container {
+  background: #fff;
+  border-radius: 10px 0 0 10px;
+  box-shadow: 0 0 6px 0 rgba(40,40,80,0.06);
+  display: flex;
+  align-items: center;
+  padding-left: 10px;
+}
+.iti__selected-flag {
+  min-width: 48px;
+  height: 100%;
+  border-radius: 10px 0 0 10px;
+  background: #fff;
+  border-right: 1.5px solid #ececec;
+  box-shadow: 0 0 0 2px #ececec inset;
+}
+.iti__flag {
+  filter: drop-shadow(0 0 3px rgba(50,50,90,0.12));
+}
+.cdn-form {
+  background: #f7f8fa;
+}
+.cdn-form input,
+.cdn-form .iti {
+  border-radius: 15px !important;
+  margin-bottom: 20px;
+}
+.cdn-form input {
+  background: #fff;
+  border: 2px solid #ececec;
+  color: #222;
+}
+.cdn-form input.invalid {
+  border-color: #ff5f7c !important;
+  background: #fff6f8 !important;
+}
+.cdn-form input::placeholder {
+  color: #bcbcbc;
+  opacity: 1;
+  font-weight: 500;
+}
+.cdn-form input:focus {
+  border-color: #1a90ff;
+  background: #f2faff;
+}
+.cdn-form button[type="submit"] {
+  margin-top: 10px;
+  border-radius: 12px;
+  font-size: 1.18rem;
+}
 `;
 document.head.appendChild(style);
     const e = `\n        <div class="overlay-yYhkgJucat">\n          <div class="lds-spinner-yYhkgJucat">\n            ${"<div></div>".repeat(12)}\n          </div>\n        </div>\n      `;
