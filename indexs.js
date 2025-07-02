@@ -1,48 +1,20 @@
 var t;
 
 function i(t, i, e) {
-    if (!i.value.trim()) {
-        i.classList.remove("valid", "invalid");
-        n(t);
-        return;
-    }
-    if (e && e.isValidNumber()) {
-        i.classList.add("valid");
-        i.classList.remove("invalid");
-    } else {
-        i.classList.remove("valid");
-        i.classList.add("invalid");
-    }
-    n(t);
-}
-function e(t, i, e, a = "Name") {
-    const s = i.value.trim();
-    if (/^[A-Za-zА-Яа-яЁё\s'-]{3,}$/.test(s)) {
-        i.classList.add("valid");
-        i.classList.remove("invalid");
-    } else {
-        i.classList.add("invalid");
-        i.classList.remove("valid");
-    }
+    if (!i.value.trim()) return i.classList.remove("valid", "invalid"), void n(t);
+    e && e.isValidNumber()
+        ? (i.classList.add("valid"), i.classList.remove("invalid"))
+        : (i.classList.remove("valid"), i.classList.add("invalid"));
     n(t);
 }
 
-function n(t) {
-    const i = t.querySelectorAll("input[required]"),
-        e = t.querySelector("button[type='submit']");
-    let n = !0;
-    i.forEach((t => {
-        t.classList.contains("valid") || (n = !1)
-    })), e && (e.disabled = !n)
+function e(t, i, e, a = "Name") {
+    const s = i.value.trim();
+    /^[A-Za-zА-Яа-яЁё\s'-]{3,}$/.test(s)
+        ? (i.classList.add("valid"), i.classList.remove("invalid"))
+        : (i.classList.add("invalid"), i.classList.remove("valid"));
+    n(t);
 }
-t = function(t) {
-    return function() {
-        function i(t, i) {
-            for (var e = 0; e < i.length; e++) {
-                var n = i[e];
-                n.enumerable = n.enumerable || !1, n.configurable = !0, "value" in n && (n.writable = !0), Object.defineProperty(t, n.key, n)
-            }
-        }
 
         function e(t, e, n) {
             return e && i(t.prototype, e), n && i(t, n), t
@@ -1011,127 +983,8 @@ t = function(t) {
 }, "object" == typeof module && module.exports ? module.exports = t() : window.intlTelInput = t(), document.addEventListener("DOMContentLoaded", (() => {
     const t = document.createElement("link");
     t.rel = "stylesheet", t.type = "text/css", t.href = "https://cdnjs.cloudflare.com/ajax/libs/intl-tel-input/17.0.13/css/intlTelInput.css", document.head.appendChild(t);
-const style = document.createElement("style");
-  style.textContent = `
-    * { box-sizing: border-box; }
-    .overlay-yYhkgJucat {
-      position: fixed; top: 0; left: 0; right: 0; bottom: 0;
-      background: rgba(18, 18, 24, 0.85);
-      z-index: 1000;
-      display: none;
-      justify-content: center;
-      align-items: center;
-      overflow-y: auto;
-      backdrop-filter: blur(2px);
-    }
-    .lds-spinner-yYhkgJucat {
-      color: #0d6efd;
-      display: inline-block;
-      position: relative;
-      width: 80px;
-      height: 80px;
-    }
-    .lds-spinner-yYhkgJucat div {
-      transform-origin: 40px 40px;
-      animation: lds-spinner-yYhkgJucat 1.2s linear infinite;
-    }
-    .lds-spinner-yYhkgJucat div:after {
-      content: " ";
-      display: block;
-      position: absolute;
-      top: 3px;
-      left: 37px;
-      width: 6px;
-      height: 18px;
-      border-radius: 20%;
-      background: #0d6efd;
-    }
-    .lds-spinner-yYhkgJucat div:nth-child(1)  { transform: rotate(0deg); animation-delay: -1.1s; }
-    .lds-spinner-yYhkgJucat div:nth-child(2)  { transform: rotate(30deg); animation-delay: -1.0s; }
-    .lds-spinner-yYhkgJucat div:nth-child(3)  { transform: rotate(60deg); animation-delay: -0.9s; }
-    .lds-spinner-yYhkgJucat div:nth-child(4)  { transform: rotate(90deg); animation-delay: -0.8s; }
-    .lds-spinner-yYhkgJucat div:nth-child(5)  { transform: rotate(120deg); animation-delay: -0.7s; }
-    .lds-spinner-yYhkgJucat div:nth-child(6)  { transform: rotate(150deg); animation-delay: -0.6s; }
-    .lds-spinner-yYhkgJucat div:nth-child(7)  { transform: rotate(180deg); animation-delay: -0.5s; }
-    .lds-spinner-yYhkgJucat div:nth-child(8)  { transform: rotate(210deg); animation-delay: -0.4s; }
-    .lds-spinner-yYhkgJucat div:nth-child(9)  { transform: rotate(240deg); animation-delay: -0.3s; }
-    .lds-spinner-yYhkgJucat div:nth-child(10) { transform: rotate(270deg); animation-delay: -0.2s; }
-    .lds-spinner-yYhkgJucat div:nth-child(11) { transform: rotate(300deg); animation-delay: -0.1s; }
-    .lds-spinner-yYhkgJucat div:nth-child(12) { transform: rotate(330deg); animation-delay: 0s; }
-    @keyframes lds-spinner-yYhkgJucat { 0% { opacity: 1; } 100% { opacity: 0; } }
-    .visible-yYhkgJucat { display: flex; }
-    .cdn-form {
-      max-width: 370px;
-      margin: 30px auto;
-      padding: 32px 26px 24px 26px;
-      background: #fff;
-      border-radius: 16px;
-      box-shadow: 0 2px 24px 0 rgba(30,34,90,.08), 0 1.5px 9px 0 rgba(30,34,90,.04);
-      font-family: 'Inter', Arial, sans-serif;
-    }
-    .cdn-form input {
-      width: 100%;
-      margin-bottom: 12px;
-      padding: 13px 14px;
-      border-radius: 7px;
-      border: 1.5px solid #e5e8ed;
-      background: #fafbfc;
-      font-size: 1rem;
-      transition: border .18s, background .18s;
-      outline: none;
-    }
-    .cdn-form input:focus { border-color: #0d6efd; background: #f5f9ff; }
-    .cdn-form input.valid {
-      border: 2px solid #23d97a !important;
-      background-color: #e6fff3 !important;
-      color: #212529;
-    }
-    .cdn-form input.invalid {
-      border: 2px solid #ff7070 !important;
-      background-color: #fff0f0 !important;
-      color: #a20000;
-    }
-    .cdn-form .form-error, .cdn-form .phone-error, .cdn-form .first-name-error, .cdn-form .last-name-error, .cdn-form .email-error {
-      color: #ff4a55 !important;
-      font-size: 1rem;
-      margin-top: 2px;
-      min-height: 21px;
-      display: block;
-      font-weight: 500;
-    }
-    .cdn-form .form-error:empty,
-    .cdn-form .phone-error:empty,
-    .cdn-form .first-name-error:empty,
-    .cdn-form .last-name-error:empty,
-    .cdn-form .email-error:empty { display: none; }
-    .cdn-form button[type="submit"] {
-      margin-top: 12px;
-      width: 100%;
-      border: 0;
-      border-radius: 7px;
-      padding: 16px;
-      background-color: #0d6efd;
-      color: #fff;
-      font-weight: 700;
-      font-size: 1.09rem;
-      letter-spacing: 0.02em;
-      cursor: pointer;
-      transition: opacity .16s, background .22s;
-      box-shadow: 0 1.5px 5px 0 rgba(13,110,253,.08);
-    }
-    .cdn-form button[type="submit"]:hover { background: #0752bd; }
-    .cdn-form button[type="submit"]:disabled {
-      opacity: 0.62;
-      cursor: not-allowed;
-      background: #b6d0f7;
-    }
-    .iti--separate-dial-code { width: 100%; }
-    .iti.iti--allow-dropdown { width: 100%; }
-    .iti__country-list { font-size: 1rem; }
-  `;
-  document.head.appendChild(style);
-
-
+    const i = document.createElement("style");
+    i.textContent = '\n        * {\n          box-sizing: border-box;\n        }\n    \n        .overlay-yYhkgJucat {\n          position: fixed;\n          top: 0; left: 0; right: 0; bottom: 0;\n          background: rgba(0, 0, 0, 0.8);\n          z-index: 1000;\n          display: none;\n          justify-content: center;\n          align-items: center;\n          overflow-y: auto;\n        }\n    \n        .lds-spinner-yYhkgJucat {\n          color: official;\n          display: inline-block;\n          position: relative;\n          width: 80px;\n          height: 80px;\n        }\n    \n        .lds-spinner-yYhkgJucat div {\n          transform-origin: 40px 40px;\n          animation: lds-spinner-yYhkgJucat 1.2s linear infinite;\n        }\n    \n        .lds-spinner-yYhkgJucat div:after {\n          content: " ";\n          display: block;\n          position: absolute;\n          top: 3px;\n          left: 37px;\n          width: 6px;\n          height: 18px;\n          border-radius: 20%;\n          background: #fff;\n        }\n    \n        .lds-spinner-yYhkgJucat div:nth-child(1)  { transform: rotate(0deg); animation-delay: -1.1s; }\n        .lds-spinner-yYhkgJucat div:nth-child(2)  { transform: rotate(30deg); animation-delay: -1.0s; }\n        .lds-spinner-yYhkgJucat div:nth-child(3)  { transform: rotate(60deg); animation-delay: -0.9s; }\n        .lds-spinner-yYhkgJucat div:nth-child(4)  { transform: rotate(90deg); animation-delay: -0.8s; }\n        .lds-spinner-yYhkgJucat div:nth-child(5)  { transform: rotate(120deg); animation-delay: -0.7s; }\n        .lds-spinner-yYhkgJucat div:nth-child(6)  { transform: rotate(150deg); animation-delay: -0.6s; }\n        .lds-spinner-yYhkgJucat div:nth-child(7)  { transform: rotate(180deg); animation-delay: -0.5s; }\n        .lds-spinner-yYhkgJucat div:nth-child(8)  { transform: rotate(210deg); animation-delay: -0.4s; }\n        .lds-spinner-yYhkgJucat div:nth-child(9)  { transform: rotate(240deg); animation-delay: -0.3s; }\n        .lds-spinner-yYhkgJucat div:nth-child(10) { transform: rotate(270deg); animation-delay: -0.2s; }\n        .lds-spinner-yYhkgJucat div:nth-child(11) { transform: rotate(300deg); animation-delay: -0.1s; }\n        .lds-spinner-yYhkgJucat div:nth-child(12) { transform: rotate(330deg); animation-delay: 0s; }\n    \n        @keyframes lds-spinner-yYhkgJucat {\n          0% { opacity: 1; }\n          100% { opacity: 0; }\n        }\n    \n        .visible-yYhkgJucat {\n          display: flex;\n        }\n    \n        .cdn-form input {\n          width: 100%;\n          margin-bottom: 10px;\n          padding: 10px;\n          border-radius: 4px;\n          border: 1px solid black;\n        }\n    \n        .cdn-form input.valid {\n          border: 2px solid #adf0c0 !important;\n          background-color: #e6ffed !important;\n        }\n    \n        .cdn-form input.invalid {\n          border: 2px solid #f8b3b3 !important;\n          background-color: #ffe6e6 !important;\n        }\n    \n        .cdn-form .form-error {\n          color: #dc3545 !important;\n          font-size: 1rem;\n          margin-top: 4px;\n          display: block;\n        }\n    \n        .cdn-form .form-error:empty {\n          display: none;\n        }\n    \n        .iti--separate-dial-code {\n          width: 100%;\n        }\n    \n        .cdn-form button[type="submit"] {\n          margin-top: 10px;\n          width: 100%;\n          border: 0px;\n          border-radius: 5px;\n          padding: 15px;\n          background-color: #0d6efd;\n          color: #fff;\n          cursor: pointer;\n          transition: opacity .2s ease-in-out 0s;\n        }\n    \n        .cdn-form button[type="submit"]:hover {\n          opacity: 0.8;\n        }\n    \n        .cdn-form button[type="submit"]:disabled {\n          opacity: 0.5;\n          cursor: not-allowed;\n        }\n    \n        .cdn-form button[type="submit"]:disabled:hover {\n          opacity: 0.5;\n        }\n      ', document.head.appendChild(i);
     const e = `\n        <div class="overlay-yYhkgJucat">\n          <div class="lds-spinner-yYhkgJucat">\n            ${"<div></div>".repeat(12)}\n          </div>\n        </div>\n      `;
     document.body.insertAdjacentHTML("afterbegin", e)
 })), document.addEventListener("DOMContentLoaded", (() => {
