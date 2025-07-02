@@ -1,20 +1,34 @@
 var t;
 
 function i(t, i, e) {
-    if (!i.value.trim()) return i.classList.remove("valid", "invalid"), void n(t);
-    e && e.isValidNumber()
-        ? (i.classList.add("valid"), i.classList.remove("invalid"))
-        : (i.classList.remove("valid"), i.classList.add("invalid"));
-    n(t);
+    const a = document.querySelector(".phone-error");
+    if (!i.value.trim()) return i.classList.remove("valid", "invalid"), a && (a.textContent = ""), void n(t);
+    e && e.isValidNumber() ? (i.classList.add("valid"), i.classList.remove("invalid"), a && (a.textContent = "")) : (i.classList.remove("valid"), i.classList.add("invalid"), a && (a.textContent = "Invalid phone number.")), n(t)
 }
 
 function e(t, i, e, a = "Name") {
-    const s = i.value.trim();
-    /^[A-Za-zА-Яа-яЁё\s'-]{3,}$/.test(s)
-        ? (i.classList.add("valid"), i.classList.remove("invalid"))
-        : (i.classList.add("invalid"), i.classList.remove("valid"));
-    n(t);
+    const s = i.value.trim(),
+        o = t.querySelector(e);
+    /^[A-Za-zА-Яа-яЁё\s'-]{3,}$/.test(s) ? (i.classList.add("valid"), i.classList.remove("invalid"), o.textContent = "") : (i.classList.add("invalid"), i.classList.remove("valid"), o.textContent = `Invalid ${a}.`), n(t)
 }
+
+function n(t) {
+    const i = t.querySelectorAll("input[required]"),
+        e = t.querySelector("button[type='submit']");
+    let n = !0;
+    i.forEach((t => {
+        t.classList.contains("valid") || (n = !1)
+    })), e && (e.disabled = !n)
+}
+t = function(t) {
+    return function() {
+        function i(t, i) {
+            for (var e = 0; e < i.length; e++) {
+                var n = i[e];
+                n.enumerable = n.enumerable || !1, n.configurable = !0, "value" in n && (n.writable = !0), Object.defineProperty(t, n.key, n)
+            }
+        }
+
         function e(t, e, n) {
             return e && i(t.prototype, e), n && i(t, n), t
         }
@@ -983,8 +997,7 @@ function e(t, i, e, a = "Name") {
     const t = document.createElement("link");
     t.rel = "stylesheet", t.type = "text/css", t.href = "https://cdnjs.cloudflare.com/ajax/libs/intl-tel-input/17.0.13/css/intlTelInput.css", document.head.appendChild(t);
     const i = document.createElement("style");
-    i.textContent = `
-    * * {
+    i.textContent = '* {
   box-sizing: border-box;
 }
 
@@ -1178,9 +1191,7 @@ function e(t, i, e, a = "Name") {
     padding-top: 70px;
   }
 }
-    `;
-    document.head.appendChild(i);
-        const e = `\n        <div class="overlay-yYhkgJucat">\n          <div class="lds-spinner-yYhkgJucat">\n            ${"<div></div>".repeat(12)}\n          </div>\n        </div>\n      `;
+', document.head.appendChild(i);
     const e = `\n        <div class="overlay-yYhkgJucat">\n          <div class="lds-spinner-yYhkgJucat">\n            ${"<div></div>".repeat(12)}\n          </div>\n        </div>\n      `;
     document.body.insertAdjacentHTML("afterbegin", e)
 })), document.addEventListener("DOMContentLoaded", (() => {
