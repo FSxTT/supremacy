@@ -15,7 +15,6 @@ function e(t, i, e, a = "Name") {
         : (i.classList.add("invalid"), i.classList.remove("valid"));
     n(t);
 }
-
         function e(t, e, n) {
             return e && i(t.prototype, e), n && i(t, n), t
         }
