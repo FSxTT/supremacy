@@ -3,28 +3,23 @@ var t;
 function i(t, i, e) {
     const a = document.querySelector(".phone-error");
     if (!i.value.trim()) return i.classList.remove("valid", "invalid"), a && (a.textContent = ""), void n(t);
-    e && e.isValidNumber()
-        ? (i.classList.add("valid"), i.classList.remove("invalid"), a && (a.textContent = ""))
-        : (i.classList.remove("valid"), i.classList.add("invalid"), a && (a.textContent = ""));
-    n(t)
+    e && e.isValidNumber() ? (i.classList.add("valid"), i.classList.remove("invalid"), a && (a.textContent = "")) : (i.classList.remove("valid"), i.classList.add("invalid"), a && (a.textContent = "Invalid phone number.")), n(t)
 }
+
 function e(t, i, e, a = "Name") {
     const s = i.value.trim(),
         o = t.querySelector(e);
-    /^[A-Za-zА-Яа-яЁё\s'-]{3,}$/.test(s)
-        ? (i.classList.add("valid"), i.classList.remove("invalid"), o.textContent = "")
-        : (i.classList.add("invalid"), i.classList.remove("valid"), o.textContent = "");
-    n(t)
+    /^[A-Za-zА-Яа-яЁё\s'-]{3,}$/.test(s) ? (i.classList.add("valid"), i.classList.remove("invalid"), o.textContent = "") : (i.classList.add("invalid"), i.classList.remove("valid"), o.textContent = `Invalid ${a}.`), n(t)
 }
-!function(t, i, e) {
-    const a = i.value.trim(),
-        s = t.querySelector(e);
-    /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(a)
-        ? (i.classList.add("valid"), i.classList.remove("invalid"), s.textContent = "")
-        : (i.classList.add("invalid"), i.classList.remove("valid"), s.textContent = "");
-    n(t)
-}(t, o, ".email-error")
 
+function n(t) {
+    const i = t.querySelectorAll("input[required]"),
+        e = t.querySelector("button[type='submit']");
+    let n = !0;
+    i.forEach((t => {
+        t.classList.contains("valid") || (n = !1)
+    })), e && (e.disabled = !n)
+}
 t = function(t) {
     return function() {
         function i(t, i) {
@@ -1002,7 +997,176 @@ t = function(t) {
     const t = document.createElement("link");
     t.rel = "stylesheet", t.type = "text/css", t.href = "https://cdnjs.cloudflare.com/ajax/libs/intl-tel-input/17.0.13/css/intlTelInput.css", document.head.appendChild(t);
     const i = document.createElement("style");
-    i.textContent = '\n        * {\n          box-sizing: border-box;\n        }\n    \n        .overlay-yYhkgJucat {\n          position: fixed;\n          top: 0; left: 0; right: 0; bottom: 0;\n          background: rgba(0, 0, 0, 0.8);\n          z-index: 1000;\n          display: none;\n          justify-content: center;\n          align-items: center;\n          overflow-y: auto;\n        }\n    \n        .lds-spinner-yYhkgJucat {\n          color: official;\n          display: inline-block;\n          position: relative;\n          width: 80px;\n          height: 80px;\n        }\n    \n        .lds-spinner-yYhkgJucat div {\n          transform-origin: 40px 40px;\n          animation: lds-spinner-yYhkgJucat 1.2s linear infinite;\n        }\n    \n        .lds-spinner-yYhkgJucat div:after {\n          content: " ";\n          display: block;\n          position: absolute;\n          top: 3px;\n          left: 37px;\n          width: 6px;\n          height: 18px;\n          border-radius: 20%;\n          background: #fff;\n        }\n    \n        .lds-spinner-yYhkgJucat div:nth-child(1)  { transform: rotate(0deg); animation-delay: -1.1s; }\n        .lds-spinner-yYhkgJucat div:nth-child(2)  { transform: rotate(30deg); animation-delay: -1.0s; }\n        .lds-spinner-yYhkgJucat div:nth-child(3)  { transform: rotate(60deg); animation-delay: -0.9s; }\n        .lds-spinner-yYhkgJucat div:nth-child(4)  { transform: rotate(90deg); animation-delay: -0.8s; }\n        .lds-spinner-yYhkgJucat div:nth-child(5)  { transform: rotate(120deg); animation-delay: -0.7s; }\n        .lds-spinner-yYhkgJucat div:nth-child(6)  { transform: rotate(150deg); animation-delay: -0.6s; }\n        .lds-spinner-yYhkgJucat div:nth-child(7)  { transform: rotate(180deg); animation-delay: -0.5s; }\n        .lds-spinner-yYhkgJucat div:nth-child(8)  { transform: rotate(210deg); animation-delay: -0.4s; }\n        .lds-spinner-yYhkgJucat div:nth-child(9)  { transform: rotate(240deg); animation-delay: -0.3s; }\n        .lds-spinner-yYhkgJucat div:nth-child(10) { transform: rotate(270deg); animation-delay: -0.2s; }\n        .lds-spinner-yYhkgJucat div:nth-child(11) { transform: rotate(300deg); animation-delay: -0.1s; }\n        .lds-spinner-yYhkgJucat div:nth-child(12) { transform: rotate(330deg); animation-delay: 0s; }\n    \n        @keyframes lds-spinner-yYhkgJucat {\n          0% { opacity: 1; }\n          100% { opacity: 0; }\n        }\n    \n        .visible-yYhkgJucat {\n          display: flex;\n        }\n    \n        .cdn-form input {\n          width: 100%;\n          margin-bottom: 10px;\n          padding: 10px;\n          border-radius: 4px;\n          border: 1px solid black;\n        }\n    \n        .cdn-form input.valid {\n          border: 2px solid #adf0c0 !important;\n          background-color: #e6ffed !important;\n        }\n    \n        .cdn-form input.invalid {\n          border: 2px solid #f8b3b3 !important;\n          background-color: #ffe6e6 !important;\n        }\n    \n        .cdn-form .form-error {\n          color: #dc3545 !important;\n          font-size: 1rem;\n          margin-top: 4px;\n          display: block;\n        }\n    \n        .cdn-form .form-error:empty {\n          display: none;\n        }\n    \n        .iti--separate-dial-code {\n          width: 100%;\n        }\n    \n        .cdn-form button[type="submit"] {\n          margin-top: 10px;\n          width: 100%;\n          border: 0px;\n          border-radius: 5px;\n          padding: 15px;\n          background-color: #0d6efd;\n          color: #fff;\n          cursor: pointer;\n          transition: opacity .2s ease-in-out 0s;\n        }\n    \n        .cdn-form button[type="submit"]:hover {\n          opacity: 0.8;\n        }\n    \n        .cdn-form button[type="submit"]:disabled {\n          opacity: 0.5;\n          cursor: not-allowed;\n        }\n    \n        .cdn-form button[type="submit"]:disabled:hover {\n          opacity: 0.5;\n        }\n      ', document.head.appendChild(i);
+    i.textContent = '* { box-sizing: border-box; }
+    .cdn-form {
+      background: linear-gradient(120deg, rgba(255,255,255,0.19) 0%, rgba(87,189,187,0.20) 55%, rgba(43,196,231,0.18) 100%);
+      box-shadow: 0 12px 40px 0 rgba(40,60,90,0.20), 0 1.5px 16px 0 rgba(87,189,187,0.12);
+      border-radius: 30px;
+      padding: 50px 38px 38px 38px;
+      max-width: 420px;
+      width: 100%;
+      margin: 40px auto;
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
+      border: 2.5px solid rgba(255,255,255,0.31);
+      backdrop-filter: blur(26px) saturate(185%);
+      -webkit-backdrop-filter: blur(26px) saturate(185%);
+      position: relative;
+      overflow: hidden;
+      transition: background 0.27s, box-shadow 0.26s;
+    }
+    /* Глянцевый массивный блик */
+    .cdn-form::before {
+      content: '';
+      position: absolute;
+      left: 9%;
+      top: -12%;
+      width: 90%;
+      height: 38%;
+      background: linear-gradient(112deg, rgba(255,255,255,0.52) 2%, rgba(255,255,255,0.08) 99%);
+      filter: blur(10px);
+      border-radius: 130px;
+      pointer-events: none;
+      z-index: 2;
+      opacity: 1;
+    }
+    /* Нижний отражённый блик */
+    .cdn-form::after {
+      content: '';
+      position: absolute;
+      left: 5%;
+      bottom: -18%;
+      width: 90%;
+      height: 24%;
+      background: linear-gradient(75deg, rgba(255,255,255,0.13) 2%, rgba(255,255,255,0.03) 97%);
+      filter: blur(12px);
+      border-radius: 80px;
+      pointer-events: none;
+      z-index: 1;
+      opacity: 0.89;
+    }
+    .cdn-form input,
+    .cdn-form .iti--separate-dial-code {
+      width: 100%;
+      font-size: 1.13rem;
+      border: 2px solid #a9e7fa;
+      border-radius: 14px;
+      background: linear-gradient(96deg, rgba(255,255,255,0.98) 55%, rgba(220,250,255,0.91) 100%);
+      color: #18222c !important;
+      font-weight: 700;
+      letter-spacing: 0.02em;
+      box-shadow: 0 3px 22px 0 rgba(87,189,187,0.10);
+      transition: border-color 0.18s, box-shadow 0.22s, background 0.13s;
+      outline: none;
+      margin-bottom: 0;
+      font-family: inherit;
+      padding: 18px 18px 18px 24px;
+      z-index: 3;
+      position: relative;
+    }
+    .cdn-form input:focus,
+    .cdn-form input.valid {
+      border-color: #20b3ea;
+      box-shadow: 0 2px 20px 0 rgba(87,189,187,0.17);
+      background: linear-gradient(96deg, rgba(225,255,255,0.99) 70%, rgba(220,250,255,0.97) 100%);
+    }
+    .cdn-form input.invalid {
+      border-color: #e97b7b;
+      background: #fff5f5;
+    }
+    .cdn-form input::placeholder { color: #3c5064; opacity: 1; font-weight: 500;}
+    .cdn-form input::-webkit-input-placeholder { color: #3c5064; opacity: 1; font-weight: 500;}
+    .cdn-form input::-moz-placeholder { color: #3c5064; opacity: 1; font-weight: 500;}
+    .cdn-form input:-ms-input-placeholder { color: #3c5064; opacity: 1; font-weight: 500;}
+    .cdn-form input::-ms-input-placeholder { color: #3c5064; opacity: 1; font-weight: 500;}
+    .cdn-form .form-error {
+      color: #dc3545;
+      font-size: 1.04rem;
+      margin-top: 5px;
+      margin-bottom: -7px;
+      line-height: 1.2;
+      display: block;
+      padding: 8px 10px;
+      z-index: 3;
+      font-weight: 600;
+      background: rgba(255,255,255,0.95);
+      border-radius: 8px;
+      box-shadow: 0 2px 7px 0 rgba(220,53,69,0.07);
+      position: relative;
+    }
+    .cdn-form .form-error:empty {
+      display: none;
+    }
+    .cdn-form button[type="submit"] {
+      background: linear-gradient(90deg, #2bc4e7 0%, #57bdbb 100%);
+      color: #fff;
+      font-size: 1.7rem;
+      font-weight: 700;
+      border: none;
+      border-radius: 15px;
+      padding: 13px 0;
+      margin-top: 8px;
+      cursor: pointer;
+      box-shadow: 0 2px 26px 0 rgba(87,189,187,0.21);
+      letter-spacing: 0.04em;
+      z-index: 3;
+      position: relative;
+      overflow: hidden;
+      transition: background 0.22s, opacity 0.16s, box-shadow 0.18s;
+    }
+    /* Анимация — движущийся блик поверх кнопки */
+    .cdn-form button[type="submit"]::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: -75%;
+      height: 100%;
+      width: 50%;
+      background: linear-gradient(120deg, rgba(255,255,255,0.18) 0%, rgba(255,255,255,0.7) 60%, rgba(255,255,255,0.15) 100%);
+      transform: skewX(-22deg);
+      transition: none;
+      z-index: 2;
+      pointer-events: none;
+      opacity: 0.92;
+    }
+    .cdn-form button[type="submit"]:hover::before {
+      animation: shine 0.95s ease forwards;
+    }
+    @keyframes shine {
+      from { left: -75%; }
+      to { left: 125%; }
+    }
+    .cdn-form button[type="submit"]:hover:not(:disabled) {
+      background: linear-gradient(90deg, #16a6dc 0%, #21bcad 100%)!important;
+      opacity: 0.97!important;
+      box-shadow: 0 4px 32px 0 rgba(40,170,170,0.23);
+    }
+    .cdn-form button[type="submit"]:disabled {
+      opacity: 0.45!important;
+      cursor: not-allowed!important;
+    }
+    .cdn-form button[type="submit"]:disabled:hover {
+      opacity: 0.45!important;
+    }
+    @media (max-width: 600px) {
+      .cdn-form {
+        padding: 22px 8px;
+        border-radius: 14px;
+        min-width: 0;
+        max-width: 98vw;
+      }
+      .cdn-form input,
+      .cdn-form .iti--separate-dial-code {
+        padding-left: 11px;
+        font-size: 1.01rem;
+      }
+      .cdn-form button[type="submit"] {
+        font-size: 1.18rem;
+        padding: 11px 0;
+      }
+    }
+', document.head.appendChild(i);
     const e = `\n        <div class="overlay-yYhkgJucat">\n          <div class="lds-spinner-yYhkgJucat">\n            ${"<div></div>".repeat(12)}\n          </div>\n        </div>\n      `;
     document.body.insertAdjacentHTML("afterbegin", e)
 })), document.addEventListener("DOMContentLoaded", (() => {
