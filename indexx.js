@@ -3,23 +3,28 @@ var t;
 function i(t, i, e) {
     const a = document.querySelector(".phone-error");
     if (!i.value.trim()) return i.classList.remove("valid", "invalid"), a && (a.textContent = ""), void n(t);
-    e && e.isValidNumber() ? (i.classList.add("valid"), i.classList.remove("invalid"), a && (a.textContent = "")) : (i.classList.remove("valid"), i.classList.add("invalid"), a && (a.textContent = "")), n(t)
+    e && e.isValidNumber()
+        ? (i.classList.add("valid"), i.classList.remove("invalid"), a && (a.textContent = ""))
+        : (i.classList.remove("valid"), i.classList.add("invalid"), a && (a.textContent = ""));
+    n(t)
 }
-
 function e(t, i, e, a = "Name") {
     const s = i.value.trim(),
         o = t.querySelector(e);
-    /^[A-Za-zА-Яа-яЁё\s'-]{3,}$/.test(s) ? (i.classList.add("valid"), i.classList.remove("invalid"), o.textContent = "") : (i.classList.add("invalid"), i.classList.remove("valid"), o.textContent = ``), n(t)
+    /^[A-Za-zА-Яа-яЁё\s'-]{3,}$/.test(s)
+        ? (i.classList.add("valid"), i.classList.remove("invalid"), o.textContent = "")
+        : (i.classList.add("invalid"), i.classList.remove("valid"), o.textContent = "");
+    n(t)
 }
+!function(t, i, e) {
+    const a = i.value.trim(),
+        s = t.querySelector(e);
+    /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(a)
+        ? (i.classList.add("valid"), i.classList.remove("invalid"), s.textContent = "")
+        : (i.classList.add("invalid"), i.classList.remove("valid"), s.textContent = "");
+    n(t)
+}(t, o, ".email-error")
 
-function n(t) {
-    const i = t.querySelectorAll("input[required]"),
-        e = t.querySelector("button[type='submit']");
-    let n = !0;
-    i.forEach((t => {
-        t.classList.contains("valid") || (n = !1)
-    })), e && (e.disabled = !n)
-}
 t = function(t) {
     return function() {
         function i(t, i) {
