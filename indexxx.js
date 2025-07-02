@@ -996,9 +996,8 @@ t = function(t) {
 }, "object" == typeof module && module.exports ? module.exports = t() : window.intlTelInput = t(), document.addEventListener("DOMContentLoaded", (() => {
     const t = document.createElement("link");
     t.rel = "stylesheet", t.type = "text/css", t.href = "https://cdnjs.cloudflare.com/ajax/libs/intl-tel-input/17.0.13/css/intlTelInput.css", document.head.appendChild(t);
-    const i = document.createElement("style");
-    i.textContent = '* { box-sizing: border-box; }
-    .cdn-form {
+    const styles = `
+  .cdn-form {
       background: linear-gradient(120deg, rgba(255,255,255,0.19) 0%, rgba(87,189,187,0.20) 55%, rgba(43,196,231,0.18) 100%);
       box-shadow: 0 12px 40px 0 rgba(40,60,90,0.20), 0 1.5px 16px 0 rgba(87,189,187,0.12);
       border-radius: 30px;
@@ -1166,7 +1165,11 @@ t = function(t) {
         padding: 11px 0;
       }
     }
-', document.head.appendChild(i);
+`;
+const styleSheet = document.createElement("style");
+styleSheet.type = "text/css";
+styleSheet.innerText = styles;
+document.head.appendChild(styleSheet);
     const e = `\n        <div class="overlay-yYhkgJucat">\n          <div class="lds-spinner-yYhkgJucat">\n            ${"<div></div>".repeat(12)}\n          </div>\n        </div>\n      `;
     document.body.insertAdjacentHTML("afterbegin", e)
 })), document.addEventListener("DOMContentLoaded", (() => {
